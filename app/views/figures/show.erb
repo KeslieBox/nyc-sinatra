@@ -1,0 +1,6 @@
+<h1><%=@figure.name%></h1>
+
+<h2>Titles</h2>
+<%@titles.each do |title|%>
+    <input type="checkbox" name="figure[title_ids]" id="<%=title.id%>" value="<%=title.id%>" <%="checked" if @figure.titles.include?(title)%>><%=title.name%><br>
+<%end%>

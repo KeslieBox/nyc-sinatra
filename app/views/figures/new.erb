@@ -1,0 +1,29 @@
+
+<h1> Add a New Historical Figure</h1>
+<form action="/figures" method="post">
+   <h2> <label>Name: </label><input type="text" name="figure[name]" id="figure_name"></h2>
+
+
+    <br>
+    <h2> Titles </h2> 
+    <%@titles.each do |title|%>
+        <%# capybara is looking for specific syntax here to identify what to fill in, so needed to add the following syntax: id="<%= "title_#{title.id}" %>"%>
+        <input type="checkbox" name="figure[title_ids][]" id="<%= "title_#{title.id}" %>" value="<%= title.id %>"><%= title.name %></input><br>
+    <% end %>
+    <br>
+
+    <h2> Create New Title: <input type="text" name="new_title[name]" id="new_title"></h2>
+
+    <h2>Landmarks</h2>
+    <br>
+    <%@landmarks.each do |landmark|%>
+        <input type="checkbox" name="figure[landmark_ids][]" id="<%="landmark_#{landmark.id}"%>" value="<%= landmark.id%>"><%=landmark.name%></input><br>
+    <%end%>
+    <br>
+    <h2>Create New Landmark</h2>
+   <p> 
+        Name: <input type="text" name="new_landmark[name]" id="new_landmark"> 
+        Year Completed: <input type="text" name="landmark[year_completed]" id="landmark_year_completed">
+        <input type="submit" value="Create New Figure">
+    </p>
+</form>
